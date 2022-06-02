@@ -29,6 +29,8 @@
 		E58D649E2848854400A06569 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649D2848854400A06569 /* User.swift */; };
 		E58D64A0284925D100A06569 /* HabitStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649F284925D100A06569 /* HabitStatistics.swift */; };
 		E58D64A22849260200A06569 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A12849260200A06569 /* UserCount.swift */; };
+		E58D64A42849419900A06569 /* UserStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A32849419900A06569 /* UserStatistics.swift */; };
+		E58D64A6284941CA00A06569 /* HabitCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A5284941CA00A06569 /* HabitCount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		E58D649D2848854400A06569 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E58D649F284925D100A06569 /* HabitStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitStatistics.swift; sourceTree = "<group>"; };
 		E58D64A12849260200A06569 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
+		E58D64A32849419900A06569 /* UserStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatistics.swift; sourceTree = "<group>"; };
+		E58D64A5284941CA00A06569 /* HabitCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				E58D649D2848854400A06569 /* User.swift */,
 				E58D64A12849260200A06569 /* UserCount.swift */,
 				E58D649F284925D100A06569 /* HabitStatistics.swift */,
+				E58D64A32849419900A06569 /* UserStatistics.swift */,
+				E58D64A5284941CA00A06569 /* HabitCount.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,10 +241,12 @@
 				E58D649C28487CDE00A06569 /* NamedSectionHeaderView.swift in Sources */,
 				E58D649628483EF600A06569 /* Setting.swift in Sources */,
 				E58D649E2848854400A06569 /* User.swift in Sources */,
+				E58D64A42849419900A06569 /* UserStatistics.swift in Sources */,
 				E58D6488284834AC00A06569 /* UserDetailViewController.swift in Sources */,
 				E58D64802848341F00A06569 /* HabitCollectionViewController.swift in Sources */,
 				E58D64692848307400A06569 /* AppDelegate.swift in Sources */,
 				E58D64A0284925D100A06569 /* HabitStatistics.swift in Sources */,
+				E58D64A6284941CA00A06569 /* HabitCount.swift in Sources */,
 				E58D64842848344300A06569 /* LogHabitCollectionViewController.swift in Sources */,
 				E58D648B284834F600A06569 /* Habit.swift in Sources */,
 				E58D649428483B1900A06569 /* APIService.swift in Sources */,

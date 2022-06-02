@@ -40,6 +40,16 @@ class HabitCollectionViewController: UICollectionViewController {
         }
     }
     
+    enum SectionHeader: String {
+        
+        case kind = "SectionHeader"
+        case reuse = "HeaderView"
+        
+        var identifier: String {
+            return rawValue
+        }
+    }
+    
     var dataSource: DataSourceType!
     var model = Model()
     
@@ -52,6 +62,8 @@ class HabitCollectionViewController: UICollectionViewController {
         dataSource = createDataSource()
         collectionView.dataSource = dataSource
         collectionView.collectionViewLayout = createLayout()
+        
+        collectionView.register(NamedSectionHeaderView.self, forSupplementaryViewOfKind: SectionHeader.kind.identifier, withReuseIdentifier: SectionHeader.reuse.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +81,19 @@ class HabitCollectionViewController: UICollectionViewController {
             
             return cell
         }
+        
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath ) in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: SectionHeader.kind.identifier, withReuseIdentifier: SectionHeader.reuse.identifier, for: indexPath) as! NamedSectionHeaderView
+            
+            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            switch section{
+            case .favorites:
+                header.nameLabel.text = "Favorites"
+            case .category(let catetory):
+                header.nameLabel.text = catetory.name
+            }
+            return header
+        }
         return dataSource
     }
     
@@ -79,8 +104,13 @@ class HabitCollectionViewController: UICollectionViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(36))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SectionHeader", alignment: .top)
+        sectionHeader.pinToVisibleBounds = true
+        
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.boundarySupplementaryItems = [sectionHeader]
         
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -90,7 +120,6 @@ class HabitCollectionViewController: UICollectionViewController {
             if let habits = try? await HabitRequest().send(){
                 self.model.habitsByName = habits
             } else {
-                // MARK: problem is here always habits is nil. see details on APIRequest.swift
                 self.model.habitsByName = [:]
             }
             self.updateCollectionVew()
@@ -101,7 +130,6 @@ class HabitCollectionViewController: UICollectionViewController {
     func updateCollectionVew(){
         var itemsBySection = model.habitsByName.values.reduce(into: [ViewModel.Section: [ViewModel.Item]]()) { partial, habit in
             let item = habit
-            print(item)
             let section: ViewModel.Section
             if model.favoriteHabits.contains(habit){
                 section = .favorites
@@ -115,4 +143,18 @@ class HabitCollectionViewController: UICollectionViewController {
         itemsBySection = itemsBySection.mapValues { $0.sorted() }
         dataSource.applySnapshotUsing(sectionIDs: sectionIDs, itemsBySection: itemsBySection)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let item = self.dataSource.itemIdentifier(for: indexPath)!
+            let favoriteToggle = UIAction(title: self.model.favoriteHabits.contains(item) ? "Unfavorite" : "Favorite") { (action) in
+                Settings.shared.toggleFavorite(item)
+                self.updateCollectionVew()
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [favoriteToggle])
+        }
+        return config
+    }
+    
+    
 }

@@ -25,6 +25,8 @@
 		E58D649428483B1900A06569 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649328483B1900A06569 /* APIService.swift */; };
 		E58D649628483EF600A06569 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649528483EF600A06569 /* Setting.swift */; };
 		E58D64992848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64982848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift */; };
+		E58D649C28487CDE00A06569 /* NamedSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649B28487CDE00A06569 /* NamedSectionHeaderView.swift */; };
+		E58D649E2848854400A06569 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D649D2848854400A06569 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		E58D649328483B1900A06569 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		E58D649528483EF600A06569 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E58D64982848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewDiffableDataSource+ViewModel.swift"; sourceTree = "<group>"; };
+		E58D649B28487CDE00A06569 /* NamedSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedSectionHeaderView.swift; sourceTree = "<group>"; };
+		E58D649D2848854400A06569 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		E58D64672848307400A06569 /* GuideProject_Habits */ = {
 			isa = PBXGroup;
 			children = (
+				E58D649A28487CA100A06569 /* View */,
 				E58D6497284842FA00A06569 /* Extension */,
 				E58D64902848358D00A06569 /* NetWorking */,
 				E58D6489284834E600A06569 /* Model */,
@@ -114,6 +119,7 @@
 				E58D648A284834F600A06569 /* Habit.swift */,
 				E58D648C2848352800A06569 /* Category.swift */,
 				E58D648E2848354C00A06569 /* Color.swift */,
+				E58D649D2848854400A06569 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +139,14 @@
 				E58D64982848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E58D649A28487CA100A06569 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E58D649B28487CDE00A06569 /* NamedSectionHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +225,9 @@
 				E58D64992848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift in Sources */,
 				E58D648F2848354C00A06569 /* Color.swift in Sources */,
 				E58D64822848343600A06569 /* UserCollectionViewController.swift in Sources */,
+				E58D649C28487CDE00A06569 /* NamedSectionHeaderView.swift in Sources */,
 				E58D649628483EF600A06569 /* Setting.swift in Sources */,
+				E58D649E2848854400A06569 /* User.swift in Sources */,
 				E58D6488284834AC00A06569 /* UserDetailViewController.swift in Sources */,
 				E58D64802848341F00A06569 /* HabitCollectionViewController.swift in Sources */,
 				E58D64692848307400A06569 /* AppDelegate.swift in Sources */,

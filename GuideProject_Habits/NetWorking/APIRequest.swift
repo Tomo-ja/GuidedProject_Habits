@@ -60,8 +60,6 @@ extension APIRequest where Response: Decodable{
               httpResponse.statusCode == 200 else {
             throw APIRequestError.itemNotFound
         }
-        
-        // MARK: problem is here. try is always fail. data has data. so decoding problem
         let decoder = JSONDecoder()
         let decoded = try decoder.decode(Response.self, from: data)
         return decoded

@@ -22,6 +22,15 @@ class UserDetailViewController: UIViewController {
             case leading
             case category(_ category: Category)
             
+            var sectionColor: UIColor {
+                switch self{
+                case .leading:
+                    return .systemGray4
+                case .category(let category):
+                    return category.color.uiColor
+                }
+            }
+            
             static func < (lhs: Section, rhs: Section) -> Bool {
                 switch (lhs, rhs){
                 case (.leading, .category), (.leading, .leading):
@@ -53,6 +62,8 @@ class UserDetailViewController: UIViewController {
     var dataSource: DataSourceType!
     var model = Model()
     
+    var updateTimer: Timer?
+    
     var imageRequestTask: Task<Void, Never>? = nil
     var userStatisticsRequestTask: Task<Void, Never>? = nil
     var habitLeadStatisticsRequestTask: Task<Void, Never>? = nil
@@ -68,14 +79,44 @@ class UserDetailViewController: UIViewController {
         userNameLabel.text = user.name
         bioLabel.text = user.bio
         
+        view.backgroundColor = user.color?.uiColor ?? .white
+        
+        let tabBarApperance = UITabBarAppearance()
+        tabBarApperance.backgroundColor = .quaternarySystemFill
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarApperance
+        let navBarAppereance = UINavigationBarAppearance()
+        navBarAppereance.backgroundColor = .quaternarySystemFill
+        navigationItem.scrollEdgeAppearance = navBarAppereance
+
         collectionView.register(NamedSectionHeaderView.self, forSupplementaryViewOfKind: SectionHeader.kind.identifier, withReuseIdentifier: SectionHeader.reuse.identifier)
         
         dataSource = createDataSource()
         collectionView.dataSource = dataSource
         collectionView.collectionViewLayout = createLayout()
         
+        imageRequestTask = Task {
+            if let image = try? await ImageRequest(imageID: user.id).send(){
+                self.profileImageView.image = image
+            }
+            imageRequestTask = nil
+        }
+        
         update()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.update()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateTimer?.invalidate()
+        updateTimer = nil
     }
     
     init?(coder: NSCoder, user: User){
@@ -111,6 +152,7 @@ class UserDetailViewController: UIViewController {
             case .category(let category):
                 header.nameLabel.text = category.name
             }
+            header.backgroundColor = section.sectionColor
             return header
         }
         return dataSource

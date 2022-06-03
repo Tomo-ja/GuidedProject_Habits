@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+let favoriteHabitColor = UIColor(hue: 0.15, saturation: 1, brightness: 0.9, alpha: 1)
 
 class HabitCollectionViewController: UICollectionViewController {
     
@@ -17,6 +17,15 @@ class HabitCollectionViewController: UICollectionViewController {
         enum Section: Hashable, Comparable{
             case favorites
             case category(_ category: Category)
+            
+            var sectionColor: UIColor {
+                switch self{
+                case .favorites:
+                    return favoriteHabitColor
+                case .category(let category):
+                    return category.color.uiColor
+                }
+            }
             
             static func < (lhs: Section, rhs: Section) -> Bool{
                 switch (lhs, rhs){
@@ -71,13 +80,18 @@ class HabitCollectionViewController: UICollectionViewController {
         
         update()
     }
+    
+    func configureCell(_ cell: UICollectionViewListCell, withItem item: HabitCollectionViewController.ViewModel.Item) {
+        var contents = cell.defaultContentConfiguration()
+        contents.text = item.name
+        cell.contentConfiguration = contents
+    }
+    
     func createDataSource() -> DataSourceType {
         let dataSource = DataSourceType(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewListCell in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Habit", for: indexPath) as! UICollectionViewListCell
             
-            var contents = cell.defaultContentConfiguration()
-            contents.text = item.name
-            cell.contentConfiguration = contents
+            self.configureCell(cell, withItem: item)
             
             return cell
         }
@@ -92,6 +106,9 @@ class HabitCollectionViewController: UICollectionViewController {
             case .category(let catetory):
                 header.nameLabel.text = catetory.name
             }
+            
+            header.backgroundColor = section.sectionColor
+            
             return header
         }
         return dataSource

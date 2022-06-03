@@ -31,6 +31,10 @@
 		E58D64A22849260200A06569 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A12849260200A06569 /* UserCount.swift */; };
 		E58D64A42849419900A06569 /* UserStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A32849419900A06569 /* UserStatistics.swift */; };
 		E58D64A6284941CA00A06569 /* HabitCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A5284941CA00A06569 /* HabitCount.swift */; };
+		E58D64A82849757500A06569 /* LoggedHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A72849757400A06569 /* LoggedHabit.swift */; };
+		E58D64AA28497BA700A06569 /* LeaderboardHabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64A928497BA700A06569 /* LeaderboardHabitCollectionViewCell.swift */; };
+		E58D64AC28497DBE00A06569 /* FollowedUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64AB28497DBE00A06569 /* FollowedUserCollectionViewCell.swift */; };
+		E58D64AE28498D4200A06569 /* CombinedStatisics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D64AD28498D4200A06569 /* CombinedStatisics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		E58D64A12849260200A06569 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		E58D64A32849419900A06569 /* UserStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatistics.swift; sourceTree = "<group>"; };
 		E58D64A5284941CA00A06569 /* HabitCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCount.swift; sourceTree = "<group>"; };
+		E58D64A72849757400A06569 /* LoggedHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedHabit.swift; sourceTree = "<group>"; };
+		E58D64A928497BA700A06569 /* LeaderboardHabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardHabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		E58D64AB28497DBE00A06569 /* FollowedUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		E58D64AD28498D4200A06569 /* CombinedStatisics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedStatisics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +121,10 @@
 			children = (
 				E58D647D2848341200A06569 /* HomeCollectionViewController.swift */,
 				E58D647F2848341F00A06569 /* HabitCollectionViewController.swift */,
-				E58D64812848343600A06569 /* UserCollectionViewController.swift */,
-				E58D64832848344300A06569 /* LogHabitCollectionViewController.swift */,
 				E58D64852848349E00A06569 /* HabitDetailViewController.swift */,
+				E58D64812848343600A06569 /* UserCollectionViewController.swift */,
 				E58D6487284834AC00A06569 /* UserDetailViewController.swift */,
+				E58D64832848344300A06569 /* LogHabitCollectionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -132,6 +140,8 @@
 				E58D649F284925D100A06569 /* HabitStatistics.swift */,
 				E58D64A32849419900A06569 /* UserStatistics.swift */,
 				E58D64A5284941CA00A06569 /* HabitCount.swift */,
+				E58D64A72849757400A06569 /* LoggedHabit.swift */,
+				E58D64AD28498D4200A06569 /* CombinedStatisics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				E58D649B28487CDE00A06569 /* NamedSectionHeaderView.swift */,
+				E58D64A928497BA700A06569 /* LeaderboardHabitCollectionViewCell.swift */,
+				E58D64AB28497DBE00A06569 /* FollowedUserCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,15 +246,19 @@
 			files = (
 				E58D64A22849260200A06569 /* UserCount.swift in Sources */,
 				E58D647E2848341200A06569 /* HomeCollectionViewController.swift in Sources */,
+				E58D64A82849757500A06569 /* LoggedHabit.swift in Sources */,
 				E58D648D2848352800A06569 /* Category.swift in Sources */,
 				E58D64992848432500A06569 /* UICollectionViewDiffableDataSource+ViewModel.swift in Sources */,
 				E58D648F2848354C00A06569 /* Color.swift in Sources */,
 				E58D64822848343600A06569 /* UserCollectionViewController.swift in Sources */,
 				E58D649C28487CDE00A06569 /* NamedSectionHeaderView.swift in Sources */,
 				E58D649628483EF600A06569 /* Setting.swift in Sources */,
+				E58D64AC28497DBE00A06569 /* FollowedUserCollectionViewCell.swift in Sources */,
 				E58D649E2848854400A06569 /* User.swift in Sources */,
 				E58D64A42849419900A06569 /* UserStatistics.swift in Sources */,
+				E58D64AE28498D4200A06569 /* CombinedStatisics.swift in Sources */,
 				E58D6488284834AC00A06569 /* UserDetailViewController.swift in Sources */,
+				E58D64AA28497BA700A06569 /* LeaderboardHabitCollectionViewCell.swift in Sources */,
 				E58D64802848341F00A06569 /* HabitCollectionViewController.swift in Sources */,
 				E58D64692848307400A06569 /* AppDelegate.swift in Sources */,
 				E58D64A0284925D100A06569 /* HabitStatistics.swift in Sources */,

@@ -10,6 +10,8 @@ import Foundation
 struct Settings{
     static var shared = Settings()
     
+    let currentUser = User(id: "activeUser", name: "Tomonao H", color: nil, bio: nil)
+    
     enum Setting{
         static let favoriteHabits = "favoriteHabits"
         static let followedIDs = "followedIDs"
